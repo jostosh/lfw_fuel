@@ -227,7 +227,9 @@ class LFWDataset(Dataset):
     def build_data(self, sets, sources):
         return map(lambda s: LFW(which_sets=[s], sources=sources), sets)
 
-def load_data(format=None, sets=None, sources=None, fuel_dir=False):
+
+def load_data(format=None, sets=None, sources=None, fuel_dir=False, datadir=os.path.join(os.path.expanduser('~'), '.kerosene/datasets')):
     dataset = LFWDataset()
     dataset.basename = resolve_filename(format)
-    return dataset.load_data(sets, sources, fuel_dir);
+    return dataset.load_data(sets, sources, fuel_dir, datadir);
+
